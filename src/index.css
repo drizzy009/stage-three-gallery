@@ -1,6 +1,8 @@
 :root {
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -13,11 +15,13 @@ a:hover {
 }
 
 body {
-  margin: 0;
+  margin: 0 220px;
+  padding: 20px 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -56,14 +60,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-.grid::after {
-  content: "Help";
-  position: absolute;
-  }
 
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 30px
-
-  }

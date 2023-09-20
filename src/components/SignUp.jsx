@@ -2,13 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../contexts/AuthContext";
 import { useState } from "react";
 
-const Login = () => {
+const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [error, setError] = useState("");
-  const { Login } = UserAuth();
+  const { createUser } = UserAuth();
 
   const navigate = useNavigate();
 
@@ -32,20 +32,16 @@ const Login = () => {
     return isValid;
   };
 
-  const handleLogin = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
     setError("");
 
     if (validateForm()) {
       try {
-        await Login(email, password);
-        navigate('/gallery')
+        await createUser(email, password); // Use your createUser function here.
+        navigate('/gallery'); // Navigate to another page after successful registration.
       } catch (e) {
-        if (e.code === "auth/invalid-login-credentials") {
-          setError("Invalid email address or password");
-        } else {
-          setError(e.message);
-        }
+        setError(e.message);
         console.error(e);
       }
     }
@@ -53,7 +49,7 @@ const Login = () => {
 
   return (
     <div>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleSignUp}>
         <div>
           <input
             type="email"
@@ -75,7 +71,7 @@ const Login = () => {
           <p className="error">{passwordError}</p>
         </div>
         <div>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Sign Up" />
         </div>
         <p className="error">{error}</p>
       </form>
@@ -83,4 +79,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

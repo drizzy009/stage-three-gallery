@@ -1,4 +1,17 @@
-import { image1, image2, image3, image4, image5, image6, image7, image10, image11, image12, image13 } from "../assets/gallery";
+import {
+  image1,
+  image2,
+  image3,
+  image4,
+  image5,
+  image6,
+  image7,
+  image10,
+  image11,
+  image12,
+  image13,
+  image14
+} from "../assets/gallery";
 
 export const imageData = [
   {
@@ -55,5 +68,10 @@ export const imageData = [
     id: "13",
     src: image13,
     tag: "Image13",
+  },
+  {
+    id: "14",
+    src: image14,
+    tag: "Image14",
   },
 ];

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import { UserAuth } from "../contexts/AuthContext";
+import { UserAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { imageData } from "../components/Images";
+import { imageData } from "../../components/Images";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
   SortableContext,
@@ -10,6 +10,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { useState, useEffect } from "react";
+import styles from "../GalleryPage/GalleryPage.module.css";
 
 const GalleryPage = () => {
   const { user, logout } = UserAuth();
@@ -30,7 +31,7 @@ const GalleryPage = () => {
         {...attributes}
         {...listeners}
         style={style}
-        className="grid"
+        className={styles.grid}
       >
         <img src={image.src} alt={image.tag} />
       </div>
@@ -48,7 +49,7 @@ const GalleryPage = () => {
   };
 
   useEffect(() => {
-    const STORAGE_KEY = "gallery_sorting_order"; // Define the STORAGE_KEY locally
+    const STORAGE_KEY = "gallery_sorting_order";
     const storedOrder = localStorage.getItem(STORAGE_KEY);
     if (storedOrder) {
       setTags(JSON.parse(storedOrder));
@@ -74,9 +75,9 @@ const GalleryPage = () => {
   };
 
   return (
-    <div>
+    <div className={styles.galleryContainer}>
       <p>User Email: {user && user.email}</p>
-      <div className="grid">
+      <div className={styles.gridItems}>
         <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
           <SortableContext items={tags} strategy={rectSortingStrategy}>
             {tags.map((image) => (
