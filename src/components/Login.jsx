@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../contexts/AuthContext";
 import { useState } from "react";
+import styles from "./Login.module.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -39,7 +40,7 @@ const Login = () => {
     if (validateForm()) {
       try {
         await Login(email, password);
-        navigate('/gallery')
+        navigate("/gallery");
       } catch (e) {
         if (e.code === "auth/invalid-login-credentials") {
           setError("Invalid email address or password");
@@ -52,33 +53,51 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleLogin}>
-        <div>
-          <input
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-            name=""
-            id="Email"
-          />
-          <label htmlFor="Email">Email</label>
-          <p className="error">{emailError}</p>
-        </div>
-        <div>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            name=""
-            id="password"
-          />
-          <label htmlFor="Password">Password</label>
-          <p className="error">{passwordError}</p>
-        </div>
-        <div>
-          <input type="submit" value="Submit" />
-        </div>
-        <p className="error">{error}</p>
-      </form>
+    <div className={styles.wrapper}>
+      <div className={styles.card_switch}>
+        <label className={styles.switch}>
+          <input type="checkbox" className={styles.toggle} />
+          <span className={styles.slider}></span>
+          <span className={styles.card_side}></span>
+          <div className={styles.flip_card__inner}>
+            <div className={styles.flip_card__front}>
+              <div className={styles.title}>Log in</div>
+              <form onSubmit={handleLogin} className={styles.flip_card__form}>
+                <div>
+                  <input
+                    type="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    name=""
+                    id="Email"
+                    className={styles.flip_card__input}
+                  />
+                  <label htmlFor="Email">Email</label>
+                  <p className="error">{emailError}</p>
+                </div>
+                <div>
+                  <input
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    name=""
+                    id="password"
+                    className={styles.flip_card__input}
+                  />
+                  <label htmlFor="Password">Password</label>
+                  <p className="error">{passwordError}</p>
+                </div>
+                <div>
+                  <input
+                    type="submit"
+                    value="Submit"
+                    className={styles.flip_card__btn}
+                  />
+                </div>
+                <p className="error">{error}</p>
+              </form>
+            </div>
+          </div>
+        </label>
+      </div>
     </div>
   );
 };
