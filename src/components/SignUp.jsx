@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../contexts/AuthContext";
 import { useState } from "react";
+import styles from "./SignUp.module.css";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -39,7 +40,7 @@ const SignUp = () => {
     if (validateForm()) {
       try {
         await createUser(email, password); // Use your createUser function here.
-        navigate('/gallery'); // Navigate to another page after successful registration.
+        navigate("/gallery"); // Navigate to another page after successful registration.
       } catch (e) {
         setError(e.message);
         console.error(e);
@@ -48,31 +49,41 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSignUp}>
-        <div>
-          <input
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-            name=""
-            id="Email"
-          />
-          <label htmlFor="Email">Email</label>
-          <p className="error">{emailError}</p>
-        </div>
-        <div>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            name=""
-            id="password"
-          />
-          <label htmlFor="Password">Password</label>
-          <p className="error">{passwordError}</p>
-        </div>
-        <div>
-          <input type="submit" value="Sign Up" />
-        </div>
+    <div className={styles.flip_card__back}>
+      <div className={styles.title}>Sign up</div>
+      <form className={styles.flip_card__form} onSubmit={handleSignUp}>
+        <input
+          type="email"
+          className={styles.flip_card__input}
+          onChange={(e) => setEmail(e.target.value)}
+          name=""
+          id="Email"
+          placeholder="Email"
+        />
+        <label htmlFor="Email" style={{ display: "none" }}>
+          Email
+        </label>
+        <p className="error">{emailError}</p>
+
+        <input
+          type="password"
+          className={styles.flip_card__input}
+          onChange={(e) => setPassword(e.target.value)}
+          name=""
+          id="password"
+          placeholder="Password"
+        />
+        <label htmlFor="Password" style={{ display: "none" }}>
+          Password
+        </label>
+        <p className="error">{passwordError}</p>
+
+        <input
+          type="submit"
+          className={styles.flip_card__btn}
+          value="Sign Up"
+        />
+
         <p className="error">{error}</p>
       </form>
     </div>
