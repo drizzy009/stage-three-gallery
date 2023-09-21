@@ -10,6 +10,7 @@ import image11 from "./image_11.webp";
 import image12 from "./image_12.webp";
 import image13 from "./image_13.webp";
 import image14 from "./image_14.webp";
+import searchicon from "./searchIcon.svg";
 
 export {
   image1,
@@ -23,5 +24,6 @@ export {
   image11,
   image12,
   image13,
-  image14
+  image14,
+  searchicon
 };
