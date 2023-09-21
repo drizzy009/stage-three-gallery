@@ -88,6 +88,7 @@ const Login = () => {
                   <label htmlFor="Password" style={{display: "none"}}>Password</label>
                   <p className="error">{passwordError}</p>
                 </div>
+                <p className="error" style={{margin: 0, color: "#000"}}>{error}</p>
                 <div>
                   <input
                     type="submit"
@@ -95,7 +96,7 @@ const Login = () => {
                     className={styles.flip_card__btn}
                   />
                 </div>
-                <p className="error">{error}</p>
+                
               </form>
             </div>
             <SignUp/>
