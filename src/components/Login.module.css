@@ -93,10 +93,8 @@
     text-decoration: underline;
   }
   
-  /* card */ 
-  
   .flip_card__inner {
-    width: 300px;
+    width: 320px;
     height: 350px;
     position: relative;
     background-color: transparent;
