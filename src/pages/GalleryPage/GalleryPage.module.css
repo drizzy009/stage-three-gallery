@@ -1,16 +1,55 @@
 .galleryContainer {
-  bottom: 0;
-  
+  /* padding: 0 0 40px; */
+  height: fit-content;
+}
+.galleryHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.galleryHead p {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+}
+.galleryHead p span {
+  font-style: italic;
+  text-decoration: underline;
 }
 .gridItems {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 20px;
-  grid-row-gap: 10px;
+  grid-row-gap: 20px;
 }
 .gridItems img {
   border-radius: 20px;
+}
+.grid {
+  cursor: move;
+  overflow: hidden;
+  position: relative;
+}
+.grid span {
+  color: #000;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: color-mix(in srgb, white, transparent 30%);
+  width: -moz-available;
+  width: -webkit-fill-available;
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  backdrop-filter: blur(5px);
+  border-radius: 0 0 20px 20px;
+  opacity: 1;
+  transition: bottom 300ms, opacity 300ms;
+}
+.grid:hover span {
+  opacity: 0;
+  bottom: -80px;
 }
 .gridItems .grid:nth-child(1) {
   grid-area: 1 / 1 / 2 / 2;
@@ -38,4 +77,65 @@
 }
 .gridItems .grid:nth-child(9) {
   grid-area: 3 / 3 / 4 / 4;
+}
+.notFound {
+  font-family: "Lato", sans-serif;
+  font-size: 65px;
+  width: max-content;
+  text-align: center;
+  transform: translate(100%, 100%);
+  margin: 150px 0 0px;
+}
+.logOut {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+.logOut button {
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  padding: 10px 20px;
+  height: auto;
+}
+.loader{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+.no-scroll {
+  overflow: hidden;
+}
+
+
+@media screen and (max-width: 767px) {
+  .gridItems {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+  }
+  
+  .gridItems img {
+    width: 100%;
+  }
+  .galleryHead {
+    flex-direction: column-reverse;
+  }
+  .logOut {
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .grid {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  .grid span {
+    padding: 10px;
+    font-size: 16px;
+  }
 }
