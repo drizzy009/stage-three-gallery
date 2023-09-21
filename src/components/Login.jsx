@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../contexts/AuthContext";
 import { useState } from "react";
 import styles from "./Login.module.css";
+import SignUp from "./SignUp";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -69,9 +70,10 @@ const Login = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     name=""
                     id="Email"
+                    placeholder="Email"
                     className={styles.flip_card__input}
                   />
-                  <label htmlFor="Email">Email</label>
+                  <label htmlFor="Email" style={{display: "none"}}>Email</label>
                   <p className="error">{emailError}</p>
                 </div>
                 <div>
@@ -80,21 +82,23 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     name=""
                     id="password"
+                    placeholder="Password"
                     className={styles.flip_card__input}
                   />
-                  <label htmlFor="Password">Password</label>
+                  <label htmlFor="Password" style={{display: "none"}}>Password</label>
                   <p className="error">{passwordError}</p>
                 </div>
                 <div>
                   <input
                     type="submit"
-                    value="Submit"
+                    value="Login"
                     className={styles.flip_card__btn}
                   />
                 </div>
                 <p className="error">{error}</p>
               </form>
             </div>
+            <SignUp/>
           </div>
         </label>
       </div>
