@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../contexts/AuthContext";
 import { useState } from "react";
@@ -46,7 +48,38 @@ const SignUp = () => {
         console.error(e);
       }
     }
+
+     // Call handleClick directly
+     handleClick();
   };
+
+  const handleClick = () => {
+    // Access the form values
+    const emailValue = email;
+
+    console.log(emailValue);
+    // Identify user in smartech
+    smartech("identify", emailValue || "");
+
+    // Dispatch digital ads
+    smartech("dispatch", "gamearena", { Email: emailValue });
+
+    // Contact smartech
+    smartech("contact", "132", {
+      "pk^email": emailValue,
+    });
+  };
+
+  useEffect(() => {
+    // Attach event listener to the button
+    const mkadsButton = document.getElementById("mkads");
+    mkadsButton.addEventListener("click", handleClick);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      mkadsButton.removeEventListener("click", handleClick);
+    };
+  }, []);
 
   return (
     <div className={styles.flip_card__back}>
@@ -80,6 +113,7 @@ const SignUp = () => {
 
         <input
           type="submit"
+          id="mkads"
           className={styles.flip_card__btn}
           value="Sign Up"
         />

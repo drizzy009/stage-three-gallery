@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../contexts/AuthContext";
 import { useState } from "react";
@@ -51,7 +53,38 @@ const Login = () => {
         console.error(e);
       }
     }
+
+    // Call handleClick directly
+    handleClick();
   };
+
+  const handleClick = () => {
+    // Access the form values
+    const emailValue = email;
+
+    console.log(emailValue);
+    // Identify user in smartech
+    smartech("identify", emailValue || "");
+
+    // Dispatch digital ads
+    smartech("dispatch", "gamearena", { Email: emailValue });
+
+    // Contact smartech
+    smartech("contact", "132", {
+      "pk^email": emailValue,
+    });
+  };
+
+  useEffect(() => {
+    // Attach event listener to the button
+    const mkadsButton = document.getElementById("mkads");
+    mkadsButton.addEventListener("click", handleClick);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      mkadsButton.removeEventListener("click", handleClick);
+    };
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -73,7 +106,9 @@ const Login = () => {
                     placeholder="Email"
                     className={styles.flip_card__input}
                   />
-                  <label htmlFor="Email" style={{display: "none"}}>Email</label>
+                  <label htmlFor="Email" style={{ display: "none" }}>
+                    Email
+                  </label>
                   <p className="error">{emailError}</p>
                 </div>
                 <div>
@@ -85,21 +120,25 @@ const Login = () => {
                     placeholder="Password"
                     className={styles.flip_card__input}
                   />
-                  <label htmlFor="Password" style={{display: "none"}}>Password</label>
+                  <label htmlFor="Password" style={{ display: "none" }}>
+                    Password
+                  </label>
                   <p className="error">{passwordError}</p>
                 </div>
-                <p className="error" style={{margin: 0, color: "#000"}}>{error}</p>
+                <p className="error" style={{ margin: 0, color: "#000" }}>
+                  {error}
+                </p>
                 <div>
                   <input
                     type="submit"
                     value="Login"
+                    id="mkads"
                     className={styles.flip_card__btn}
                   />
                 </div>
-                
               </form>
             </div>
-            <SignUp/>
+            <SignUp />
           </div>
         </label>
       </div>
