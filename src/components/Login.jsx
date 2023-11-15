@@ -5,6 +5,7 @@ import { UserAuth } from "../contexts/AuthContext";
 import { useState } from "react";
 import styles from "./Login.module.css";
 import SignUp from "./SignUp";
+import MetaDecorator from "./../utils/MetaDecorator";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -88,6 +89,7 @@ const Login = () => {
 
   return (
     <div className={styles.wrapper}>
+      <MetaDecorator title="Stage 3 Gallery | Login Page" description="Login" />
       <div className={styles.card_switch}>
         <label className={styles.switch}>
           <input type="checkbox" className={styles.toggle} />

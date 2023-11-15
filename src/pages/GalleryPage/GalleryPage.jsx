@@ -14,6 +14,7 @@ import styles from "./GalleryPage.module.css";
 import SearchBar from "../../components/SeachBar";
 import _ from "lodash"; // Import lodash library
 import Loader from "./../../components/Loader/Loader";
+import MetaDecorator from './../../utils/MetaDecorator';
 
 const GalleryPage = () => {
   const { user, logout } = UserAuth();
@@ -133,6 +134,7 @@ const GalleryPage = () => {
 
   return (
     <div className={styles.galleryContainer}>
+    <MetaDecorator title="Stage 3 Gallery | Gallery Page" description="Gallery Page" />
       <div className={styles.galleryHead}>
         <SearchBar onSearch={handleSearchChange} />
         <p>

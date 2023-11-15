@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../contexts/AuthContext";
 import { useState } from "react";
 import styles from "./SignUp.module.css";
+import MetaDecorator from "../utils/MetaDecorator";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -83,6 +84,7 @@ const SignUp = () => {
 
   return (
     <div className={styles.flip_card__back}>
+    <MetaDecorator title="Stage 3 Gallery | Signup Page" description="SignUp" />
       <div className={styles.title}>Sign up</div>
       <form className={styles.flip_card__form} onSubmit={handleSignUp}>
         <input
